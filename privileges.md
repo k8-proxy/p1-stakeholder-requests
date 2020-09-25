@@ -1,8 +1,8 @@
 # Privileges management
 
-## Get pods running with elevated privileges. The command bellow will list all pods running with elevated privileges on the cluster
+## Get pods running with elevated privileges. 
 
-Any priviledge pod running on the cluster will be listed here.
+The command bellow will list all pods running with elevated privileges on the cluster.
 
 ```
 kubectl get pods -o=jsonpath='{.items[?(@.spec.containers[*].securityContext.privileged==true)].metadata.name}'\n --all-namespaces
@@ -18,7 +18,7 @@ kubectl exec -it <rebuild_pod_name>  id
 Make sure the returned user ID is not zero (root)
 
 
-## Best Practises
+## Best Practices
 - It's necessary to have a good mecanism to enforce and block pods trying to run with elevated privileges (for instance images configured with root user).
 - To achieve that, we need to enable when installing the cluster the [PodSecurityPolicy admission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podsecuritypolicy"). 
 - Admission controllers in kubernetes is a mecanism to add some addtionnal validation on k8s ressources before they are admitted to the cluster. PodSecurityPolicy Admission controller will act on the creation or modification of pods in order to determine if they should be admitted based on the policy defined by the administrator.
