@@ -5,14 +5,14 @@
 The command bellow will list all pods running with elevated privileges on the cluster.
 
 ```
-kubectl get pods -o=jsonpath='{.items[?(@.spec.containers[*].securityContext.privileged==true)].metadata.name}'\n --all-namespaces
+kubectl get pods -o=jsonpath='{range .items[?(@.spec.containers[*].securityContext.privileged==true)]}{.metadata.name}{"\n"}{end}' --all-namespaces
 ```
 
 ## Check if glasswall container runs as root
 The check above only make sure the container doesn't run as priviledged container, but it can still run as root if the docker image is configured with the root user. To check that run the command
 
 ```
-kubectl exec -it <rebuild_pod_name>  id
+kubectl -n <glasswall_namespace_name> exec -it <glasswall_pod_name> -- bash -c "id -u"
 ```
 
 Make sure the returned user ID is not zero (root)
