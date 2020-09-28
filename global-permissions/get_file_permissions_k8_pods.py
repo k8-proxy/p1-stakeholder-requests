@@ -4,7 +4,7 @@ import shutil
 OUT_DIR='./output/'
 
 if __name__ == '__main__':
-    command = "kubectl get pods --template \'{{range .items}}{{.metadata.name}}{{\"\\n\"}}{{end}}\'"
+    command = "kubectl get pods --template \'{{range.items}}{{.metadata.name}}{{\"\\n\"}}{{end}}\'"
     stream = os.popen(command)
     output = stream.read()
     pods = output.splitlines()
