@@ -1,11 +1,8 @@
 ![ICAP Client2Server Test](./logo.png)
-```
 # ICAP Client2Server Test on Docker
-```
 ## Creating Glasswall C-ICAP Docker Image
 [Download the Source code for ICAP Server Docker](https://github.com/filetrust/c-icap)
 
-```
 
 ###Build the Docker Container with named gw-icap-server.
 Go to document root and run the following command
@@ -23,7 +20,6 @@ sudo docker run -d -p 1300:1344 --name gw-icap-server gw-icap-server:latest
 
 ##  Create and Run ICAP Client
 
-```
 ###Build the Docker Container with named gw-icap.
 Go to document root and run the following command
 ```
@@ -41,19 +37,21 @@ Note: In the above command we did mount the host directory named {/home/ubuntu/t
 
 
 ###Stop the Docker Container with named gw-icap.
+```
 sudo docker stop gw-icap
 ```
 
 ###Remove the Docker Container.
 ```
 sudo docker rm --force gw-icap
+```
 
 ###Clean & Rebuild the Docker Container.
 ```
 sudo docker build --no-cache -t gw-icap:latest .
+```
 
 ## Test
-```
 ###Start the Docker Container with named gw-icap and STDOUT.
 ```
 sudo docker start gw-icap | cat /home/ubuntu/tmp/log.txt
