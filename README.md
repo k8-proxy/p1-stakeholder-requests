@@ -4,7 +4,7 @@
 [Download the Source code for ICAP Server Docker](https://github.com/filetrust/c-icap)
 
 
-###Build the Docker Container with named gw-icap-server.
+### Build the Docker Container with named gw-icap-server
 Go to document root and run the following command
 
 ```
@@ -12,22 +12,22 @@ sudo docker build -t gw-icap-server:latest .
 
 ```
 
-##Run the Docker with mounted Directory.
+## Run the Docker with mounted Directory
 ```
 sudo docker run -d -p 1300:1344 --name gw-icap-server gw-icap-server:latest
 
 ```
 
-##  Create and Run ICAP Client
+## Create and Run ICAP Client
 
-###Build the Docker Container with named gw-icap.
+### Build the Docker Container with named gw-icap
 Go to document root and run the following command
 ```
 sudo docker build -t gw-icap:latest .
 
 ```
 
-##Run the Docker with mounted Directory.
+## Run the Docker with mounted Directory
 ```
 sudo docker run -v /home/ubuntu/tmp:/var/tmp --name gw-icap gw-icap:latest
 ```
@@ -36,25 +36,26 @@ Note: In the above command we did mount the host directory named {/home/ubuntu/t
       Besides, we should run the docker with foreground option for get the stdout result. 
 
 
-###Stop the Docker Container with named gw-icap.
+### Stop the Docker Container with named gw-icap
 ```
 sudo docker stop gw-icap
 ```
 
-###Remove the Docker Container.
+### Remove the Docker Container
 ```
 sudo docker rm --force gw-icap
 ```
 
-###Clean & Rebuild the Docker Container.
+### Clean & Rebuild the Docker Container
 ```
 sudo docker build --no-cache -t gw-icap:latest .
 ```
 
 ## Test
-###Start the Docker Container with named gw-icap and STDOUT.
+### Start the Docker Container with named gw-icap and STDOUT
 ```
 sudo docker start gw-icap | cat /home/ubuntu/tmp/log.txt
 ```
+![Test Result](./test.png)
 I hope my result will be usefull to test.
 Thank you.
