@@ -12,7 +12,7 @@ sudo docker build -t gw-icap-server:latest .
 
 ```
 
-## Run the Docker with mounted Directory
+## Run the ICAP Server Docker Container
 ```
 sudo docker run -d -p 1300:1344 --name gw-icap-server gw-icap-server:latest
 
